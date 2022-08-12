@@ -41,4 +41,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/caddy2:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/caddy2:${{ env.TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/caddy2:v${{ env.TAG }}
