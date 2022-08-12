@@ -6,7 +6,15 @@ RUN xcaddy build \
     --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
 
 FROM --platform=${TARGETPLATFORM} caddy:2.5.2-alpine
+
 LABEL maintainer="dante"
+
+RUN apk update --no-cache && \
+    apk upgrade --no-cache && \
+    apk add --no-cache tzdata ca-certificates
+
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+
 ENV TZ Asia/Shanghai
+
 RUN apk update --no-cache && apk add --no-cache tzdata ca-certificates && apk upgrade --no-cache
