@@ -1,11 +1,11 @@
-FROM --platform=${TARGETPLATFORM} caddy:2.7.5-builder-alpine AS builder
+FROM --platform=${TARGETPLATFORM} caddy:2.7.6-builder-alpine AS builder
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
     --with clevergo.tech/caddy-dnspodcn \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
 
-FROM --platform=${TARGETPLATFORM} caddy:2.7.5-alpine
+FROM --platform=${TARGETPLATFORM} caddy:2.7.6-alpine
 
 LABEL maintainer="dante"
 
